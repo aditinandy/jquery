@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <title>Document</title>
+    <style>
+        .poppers1 {
+            float: left;
+        }
+
+        img {
+            width: 300px;
+            height: 250px;
+        }
+        .styleclass {
+            border-radius: 30%;
+            border: 5px dotted black;
+        }
+        #drag {
+            width: 150px;
+            height: 60px;
+            background-color: blueviolet;
+        }
+    </style>
+</head>
+<body>
+    <h1>jQuery Tutorial</h1>
+    <p>By Edureca</p>
+    <p>Start typing..</p>
+    <ul>
+        <li>Boxer</li>
+        <li>Golden Retriver<a href="google.com">Google</a></li>
+        <li>Syberian Huskey</li>
+    </ul>
+    <div class="poppers1">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Boxer_puppy_fawn_portrai.jpg/429px-Boxer_puppy_fawn_portrai.jpg">
+        <button id="hide">hide</button>
+        <button id="show">show</button>
+        <button id="toggle">toggle</button>
+    </div>
+    <div class="poppers2"><img src="https://petdogowner.com/wp-content/uploads/2019/12/123948512_l-1024x683.jpg">
+        <button id="hide">hide</button>
+        <button id="show">show</button></div>
+    <div class="poppers3">
+        <img src="https://5.imimg.com/data5/QU/GI/EL/ANDROID-12245496/product-jpeg-500x500.jpg">
+        <button id="hide">hide</button>
+        <button id="show">show</button>
+    </div>
+    <input type="text" id='sometext' value="">
+    <input type="text" id='press' size="10">
+    <button id="submit">Submit</button>
+    <button id="btn">Add class()</button>
+    <button id="slide">slide</button>
+    <p id="sildetext">Ajax</p>
+    <div id="drag">
+        <p>Drag me around</p>
+    </div>
+    <input id="datepicker" size="10" type="text">
+    <input id="data" name="data">
+    <input id="tomorrow_data" name="data">
+
+<script type="text/javascript">
+    // document.getElementById('data').value = Date();
+    var today = new Date();
+    var tomorrow = new Date();
+    tomorrow.setDate(today.getDate() + 1);
+    // console.log(tomorrow, today);
+    var dd = today.getDate();
+    var tdd = tomorrow.getDate();
+    var mm = today.getMonth() + 1;
+    var yyyy = today.getFullYear();
+    if(dd<10){
+        dd = '0' + dd;
+    }
+    if(tdd<10){
+        tdd = '0' + tdd;
+    }
+    if(mm<10){
+        mm = '0' + mm;
+    }
+    today = mm + '/' + dd + '/' + yyyy;
+    tomorrow = mm + '/' + tdd + '/' + yyyy;
+    document.getElementById('data').value = today;
+    document.getElementById('tomorrow_data').value = tomorrow;
+</script>
+
+<!-- jQuery -->
+<!-- 
+    // $(selector).action()
+    // $ - select and access a query
+    // selector - denotes the html elements that need to be manupulated
+    // action() - denotes a jQuery action to be perfermed on the html elements
+ -->
+
+ <script>
+     $("body")
+     $("ul")
+     $("ul li")
+     $("ul li a")
+     $('h1').css('color', 'red')
+     $("ul").before('<h4>my Favorite dogs</h4>')
+     $("ul").after('<h4>End of the session</h4>')
+     $("li").text()
+    //  'BoxerGolden RetriverGoogleSyberian Huskey'
+     $("li:first").text()
+    //  'Boxer'
+     $("li:last").text()
+    //  $("p").text('welcome this fun jQuery tutorial.')
+     $("li:last").html()
+     $('body').html()
+     $("li:last").html('<li>German Shepherd</li>')
+     $('ul').html()
+    // '\n        <li>Boxer</li>\n        <li>Golden Retriver<a href="google.com">Google</a></li>\n        <li><li>German Shepherd</li></li>\n    '
+     $('ul').text()
+    // '\n        Boxer\n        Golden RetriverGoogle\n        German Shepherd\n    '
+    let design = {
+        color: 'blue'
+    }
+    $('h1').css(design)
+    $(document).ready(function() {  // $(function() {}) - we can use this instead of that syntax
+        $('#submit').click(function() {
+            alert('value : ' + $('#sometext').val());
+        });
+        $('img').addClass('styleclass');
+        $('#btn').click(function() {
+            if ($('img').hasClass('styleclass')) {
+                $('img').removeClass('styleclass');
+            } else {
+                $('img').addClass('styleclass');
+            }
+            // $('img').removeClass('styleclass');
+            // $('img').toggleClass('styleclass');
+        })
+        $('img').click(function() {
+            $(this).hide();
+        })
+        $('#press').on('keypress', function() {
+            // $('p:last').hide();
+            $('p:last').text($('#press').val())
+        })
+        $('.poppers1 #hide').click(function() {
+            $('.poppers1 img').hide();
+        })
+        $('.poppers1 #show').click(function() {
+            $('.poppers1 img').show();
+        })
+        $('.poppers1 #toggle').click(function() {
+            $('.poppers1 img').toggle();
+        })
+
+        // fadeIn()
+        // fadeOut()
+
+        $('#slide').on('click', function() {
+            $('#sildetext').slideUp('slow');
+            // slideDown()
+            // slideToggle()
+        })
+        // $("#drag").draggable();
+        // draggable()
+        // dropable()
+
+        // $('#datepicker').datepicker()
+        $('#datepicker').mobiscroll().datepicker({
+            controls: ['calendar']
+        });
+    })
+ </script>
+
+</body>
+</html>
